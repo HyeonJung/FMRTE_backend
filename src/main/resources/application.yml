@@ -2,3 +2,7 @@ elasticsearch:
   clustername : gaia_elastic
   host : localhost
   port : 9300
+  
+fmrte:
+  apiKey : AIzaSyC1uJeDASliiuTZBOd_jz1Q5wSMjf9Edmg
+  baseUrl : https://www.googleapis.com/youtube/v3/
