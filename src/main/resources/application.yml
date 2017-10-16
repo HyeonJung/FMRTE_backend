@@ -1,0 +1,4 @@
+elasticsearch:
+  clustername : gaia_elastic
+  host : localhost
+  port : 9300
