@@ -1,0 +1,6 @@
+CREATE DATABASE IF NOT EXISTS `fmrte` COLLATE 'utf8_general_ci';
+
+create user 'fmrte'@'%' identified by 'qorm12#$';
+create user 'fmrte'@'localhost' identified by 'qorm12#$';
+
+grant all privileges on fmrte.* to 'fmrte'@'%';

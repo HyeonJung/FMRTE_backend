@@ -1,8 +1,13 @@
-elasticsearch:
-  clustername : gaia_elastic
-  host : localhost
-  port : 9300
-  
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update # create-drop, update
+  datasource:
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/fmrte
+    username: fmrte
+    password: 'qorm12#$'
+    
 fmrte:
   apiKey : AIzaSyC1uJeDASliiuTZBOd_jz1Q5wSMjf9Edmg
   baseUrl : https://www.googleapis.com/youtube/v3/
