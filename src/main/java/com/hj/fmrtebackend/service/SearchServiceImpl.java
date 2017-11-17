@@ -3,6 +3,7 @@ package com.hj.fmrtebackend.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,9 @@ public class SearchServiceImpl implements SearchService {
 	
 	private final RestTemplate restTemplate;
 	
+	@Autowired
+	VideoService videoService;
+	
 	public SearchServiceImpl(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
@@ -35,7 +39,7 @@ public class SearchServiceImpl implements SearchService {
 		
 		List<VideoDto> videos = new ArrayList<VideoDto>();
 		
-		String url = baseUrl + "search?part=snippet&key=" + apiKey + "&type=video&q=" + keyword;
+		String url = baseUrl + "search?part=snippet&key=" + apiKey + "&maxResults=10&type=video&q=" + keyword;
 		SearchListResponse response = this.restTemplate.getForObject(url, SearchListResponse.class);
 		
 		for (SearchResult result : response.getItems()) {
@@ -44,6 +48,7 @@ public class SearchServiceImpl implements SearchService {
 			video.setThumbnail(result.getSnippet().getThumbnails().get("default").getUrl());
 			video.setTitle(result.getSnippet().getTitle());
 			video.setDescription(result.getSnippet().getDescription());
+			video.setRegist(videoService.videoExists(result.getId().getVideoId()));
 			
 			videos.add(video);
 		}

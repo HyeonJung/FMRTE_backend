@@ -33,6 +33,17 @@ public class Video extends BaseModel {
 	@Column
 	private String userDescription;
 		
+	public Video() {
+		super();
+	}
+	
+	public Video(VideoDto videoDto) {
+		this.videoId = videoDto.getVideoId();
+		this.title = videoDto.getTitle();
+		this.description = videoDto.getDescription();
+		this.thumbnail = videoDto.getThumbnail();
+	}
+	
 	@Override
 	public String toString() {
 		return "Video [videoId=" + videoId + ", publishedAT=" + publishedAT + ", title=" + title + ", description="
