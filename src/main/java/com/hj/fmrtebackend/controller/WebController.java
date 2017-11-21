@@ -50,4 +50,10 @@ public class WebController {
 		return new ResponseEntity<>(video, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/users", method = RequestMethod.POST)
+	public ResponseEntity<?> registUser() {
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 }
