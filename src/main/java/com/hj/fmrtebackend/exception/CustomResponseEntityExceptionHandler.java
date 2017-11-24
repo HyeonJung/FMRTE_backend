@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.hj.fmrtebackend.support.ApiErrorResponseBody;
 
+import io.jsonwebtoken.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 
 @ControllerAdvice
@@ -109,7 +110,7 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 
     // 403
 
-    @ExceptionHandler({AccessDeniedException.class})
+    @ExceptionHandler({AccessDeniedException.class, SignatureException.class})
     public ResponseEntity<Object> handleAccessDeniedException(final Exception ex,
             final WebRequest request) {
         ApiErrorResponseBody apiError =

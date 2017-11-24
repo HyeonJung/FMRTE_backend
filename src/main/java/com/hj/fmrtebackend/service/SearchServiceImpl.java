@@ -3,6 +3,8 @@ package com.hj.fmrtebackend.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -35,7 +37,7 @@ public class SearchServiceImpl implements SearchService {
 	
 	
 	@Override
-	public ResponseEntity<?> searchMusicVideo(String keyword) {
+	public ResponseEntity<?> searchMusicVideo(String keyword, HttpServletRequest request) {
 		
 		List<VideoDto> videos = new ArrayList<VideoDto>();
 		
@@ -48,7 +50,7 @@ public class SearchServiceImpl implements SearchService {
 			video.setThumbnail(result.getSnippet().getThumbnails().get("default").getUrl());
 			video.setTitle(result.getSnippet().getTitle());
 			video.setDescription(result.getSnippet().getDescription());
-			video.setRegist(videoService.videoExists(result.getId().getVideoId()));
+			video.setRegist(videoService.videoExists(result.getId().getVideoId(), request));
 			
 			videos.add(video);
 		}

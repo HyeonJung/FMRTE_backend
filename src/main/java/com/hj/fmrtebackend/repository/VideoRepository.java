@@ -14,4 +14,5 @@ public interface VideoRepository extends JpaRepository<Video, Long>{
 			+ "LIMIT 1",
 			nativeQuery = true)
 	Video findRandom();
+	
 }

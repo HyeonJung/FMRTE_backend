@@ -1,5 +1,6 @@
 package com.hj.fmrtebackend.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -20,8 +21,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper=false)
 @ToString
 public class Users extends BaseModel {
-
-
+	
 	private static final long serialVersionUID = 1L;
 
 	@Column(unique=true)
@@ -56,5 +56,7 @@ public class Users extends BaseModel {
     @OneToMany(mappedBy="authorityRole.id", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
     @JsonIgnore
     private Set<Authority> authorities;
+
+    
  
 }
